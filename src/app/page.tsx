@@ -1,12 +1,11 @@
-import { useTRPC } from "@/trpc/client";
+import { caller } from "@/trpc/server"
 
-const Page = () => {
-  const trpc = useTRPC();
-  trpc.hello.queryOptions({text: "Hello"});
-
+const Page = async () => {
+  
+  const data = await caller.hello({text: 'John'})
 
   return (
-    <div>Page</div>
+    <div>{JSON.stringify(data)}</div>
   )
 }
 
